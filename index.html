@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MyMart - Save Money. Live Better.</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            blue: '#0071dc', 
+                            yellow: '#ffc220',
+                            dark: '#2e2f32'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <!-- Header Section -->
+    <header class="bg-brand-blue text-white sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-3">
+            <div class="flex items-center justify-between gap-4">
+                <!-- Logo -->
+                <a href="#" class="flex items-center gap-2 hover:opacity-90 transition shrink-0">
+                    <!-- Custom MyMart Logo -->
+                    <svg class="w-8 h-8 text-brand-yellow" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2L2 7l10 5 10-5-10-5zm0 9l2.5-1.25L12 8.5l-2.5 1.25L12 11zm0 2.5l-5-2.5-5 2.5L12 22l10-8.5-5-2.5-5 2.5z"/>
+                    </svg>
+                    <span class="text-xl font-bold tracking-tight">MyMart</span>
+                </a>
+
+                <!-- Departments Button (Desktop) -->
+                <button class="hidden md:flex items-center gap-2 font-semibold hover:bg-white/10 px-3 py-2 rounded-full transition">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                    Departments
+                </button>
+
+
+                <!-- Search Bar -->
+                <div class="flex-1 max-w-2xl relative">
+                    <input type="text" placeholder="Search everything at MyMart online and in store" class="w-full py-2.5 px-5 rounded-full text-gray-900 focus:outline-none focus:ring-2 focus:ring-brand-yellow shadow-sm">
+                    <a href="search-results.html" class="absolute right-2 top-1/2 transform -translate-y-1/2 bg-brand-yellow text-brand-dark p-1.5 rounded-full hover:bg-yellow-400 transition flex items-center justify-center">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                    </a>
+                </div>
+
+                <!-- Right Actions -->
+                <div class="flex items-center gap-4">
+                    <!-- Reorder / My Items (Hidden on mobile) -->
+                    <button class="hidden lg:flex flex-col items-center hover:bg-white/10 px-2 py-1 rounded-md transition">
+                        <svg class="w-5 h-5 mb-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
+                        <span class="text-xs">Reorder</span>
+                    </button>
+
+                    <!-- Sign In Account -->
+                    <a href="login.html" class="flex flex-col items-center hover:bg-white/10 px-2 py-1 rounded-md transition group">
+                        <div class="flex items-center gap-1">
+                            <svg class="w-5 h-5 mb-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
+                            <span class="text-xs font-semibold">Sign In</span>
+                        </div>
+                        <span class="text-xs group-hover:underline">Account</span>
+                    </a>
+
+                    <!-- Cart -->
+                    <a href="shopping-cart.html" class="flex flex-col items-center hover:bg-white/10 px-2 py-1 rounded-md transition relative">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+                        <span class="absolute top-0 right-0 bg-brand-yellow text-brand-dark text-[10px] font-bold px-1 rounded-full">0</span>
+                        <span class="text-xs font-semibold">$0.00</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Secondary Nav (Light Blue) -->
+        <div class="bg-[#e6f1fc] text-brand-dark text-sm py-2 border-b border-gray-200">
+            <div class="container mx-auto px-4 flex items-center gap-6 overflow-x-auto hide-scrollbar whitespace-nowrap">
+                <div class="flex items-center gap-2 font-bold text-brand-blue">
+                    <img src="https://placehold.co/24x24/0071dc/white?text=H" alt="How do you want your items?" class="rounded-full w-6 h-6">
+                    <span class="cursor-pointer hover:underline">How do you want your items?</span>
+                    <span class="text-gray-400">|</span>
+                </div>
+                <span class="flex items-center gap-1 text-gray-600"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg> Sacaramento, 95829</span>
+                <span class="text-gray-600 hidden sm:inline">Sacramento Supercenter</span>
+                <a href="#" class="hover:underline font-medium ml-auto">Deals</a>
+                <a href="#" class="hover:underline font-medium">Grocery & Essentials</a>
+                <a href="#" class="hover:underline font-medium">Back to School</a>
+                <a href="#" class="hover:underline font-medium">Sports</a>
+                <a href="#" class="hover:underline font-medium">Home</a>
+                <a href="category-electronics.html" class="hover:underline font-medium">Electronics</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-6 space-y-12">
+        
+        <!-- Hero Section (Slider) -->
+        <section class="relative rounded-2xl overflow-hidden shadow-md bg-white">
+            <!-- Main Hero Image -->
+            <div class="relative h-[300px] md:h-[400px] w-full">
+                <img src="images/banners/tech-savings-blowout-campaign.png" alt="Hero Banner" class="w-full h-full object-cover">
+            </div>
+            
+            <!-- Slider Indicators/Controls -->
+            <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
+                <button class="w-2 h-2 md:w-3 md:h-3 rounded-full bg-white shadow-md"></button>
+                <button class="w-2 h-2 md:w-3 md:h-3 rounded-full bg-white/50 hover:bg-white transition shadow-md"></button>
+                <button class="w-2 h-2 md:w-3 md:h-3 rounded-full bg-white/50 hover:bg-white transition shadow-md"></button>
+            </div>
+            <button class="absolute left-4 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white p-2 rounded-full shadow-lg hidden md:block">
+                <svg class="w-6 h-6 text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+            </button>
+            <button class="absolute right-4 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white p-2 rounded-full shadow-lg hidden md:block">
+                <svg class="w-6 h-6 text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+            </button>
+        </section>
+
+        <!-- Shop Deals & More by Category -->
+        <section>
+            <h2 class="text-2xl font-bold mb-6 text-gray-900">Shop deals & more by category</h2>
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
+                <!-- Category Item -->
+                <a href="#" class="flex flex-col items-center gap-3 group">
+                    <div class="w-32 h-32 rounded-full overflow-hidden bg-gray-100 shadow-sm group-hover:shadow-md transition border border-gray-200">
+                        <img src="images/categories/grocery.png" alt="Grocery" class="w-full h-full object-cover">
+                    </div>
+                    <span class="font-medium text-gray-700 group-hover:underline decoration-2">Grocery</span>
+                </a>
+                <!-- Category Item -->
+                <a href="#" class="flex flex-col items-center gap-3 group">
+                    <div class="w-32 h-32 rounded-full overflow-hidden bg-gray-100 shadow-sm group-hover:shadow-md transition border border-gray-200">
+                        <img src="images/categories/home.png" alt="Home" class="w-full h-full object-cover">
+                    </div>
+                    <span class="font-medium text-gray-700 group-hover:underline decoration-2">Home</span>
+                </a>
+                <!-- Category Item -->
+                <a href="#" class="flex flex-col items-center gap-3 group">
+                    <div class="w-32 h-32 rounded-full overflow-hidden bg-gray-100 shadow-sm group-hover:shadow-md transition border border-gray-200">
+                        <img src="images/categories/patio.png" alt="Patio & Garden" class="w-full h-full object-cover">
+                    </div>
+                    <span class="font-medium text-gray-700 group-hover:underline decoration-2">Patio & Garden</span>
+                </a>
+                <!-- Category Item -->
+                <a href="#" class="flex flex-col items-center gap-3 group">
+                    <div class="w-32 h-32 rounded-full overflow-hidden bg-gray-100 shadow-sm group-hover:shadow-md transition border border-gray-200">
+                        <img src="images/categories/sports.png" alt="Sports" class="w-full h-full object-cover">
+                    </div>
+                    <span class="font-medium text-gray-700 group-hover:underline decoration-2">Sports</span>
+                </a>
+                <!-- Category Item -->
+                <a href="category-electronics.html" class="flex flex-col items-center gap-3 group">
+                    <div class="w-32 h-32 rounded-full overflow-hidden bg-gray-100 shadow-sm group-hover:shadow-md transition border border-gray-200">
+                        <img src="images/categories/electronics.png" alt="Tech" class="w-full h-full object-cover">
+                    </div>
+                    <span class="font-medium text-gray-700 group-hover:underline decoration-2">Tech</span>
+                </a>
+                <!-- Category Item -->
+                <a href="#" class="flex flex-col items-center gap-3 group">
+                    <div class="w-32 h-32 rounded-full overflow-hidden bg-gray-100 shadow-sm group-hover:shadow-md transition border border-gray-200">
+                        <img src="images/categories/baby.png" alt="Baby" class="w-full h-full object-cover">
+                    </div>
+                    <span class="font-medium text-gray-700 group-hover:underline decoration-2">Baby</span>
+                </a>
+                <!-- Category Item -->
+                <a href="#" class="flex flex-col items-center gap-3 group">
+                    <div class="w-32 h-32 rounded-full overflow-hidden bg-gray-100 shadow-sm group-hover:shadow-md transition border border-gray-200">
+                        <img src="images/categories/toys.png" alt="Toys" class="w-full h-full object-cover">
+                    </div>
+                    <span class="font-medium text-gray-700 group-hover:underline decoration-2">Toys</span>
+                </a>
+                <!-- Category Item -->
+                <a href="#" class="flex flex-col items-center gap-3 group">
+                    <div class="w-32 h-32 rounded-full overflow-hidden bg-gray-100 shadow-sm group-hover:shadow-md transition border border-gray-200">
+                        <img src="images/categories/health-wellness.png" alt="Health & Wellness" class="w-full h-full object-cover">
+                    </div>
+                    <span class="font-medium text-gray-700 group-hover:underline decoration-2">Health & Wellness</span>
+                </a>
+                <!-- Category Item -->
+                <a href="#" class="flex flex-col items-center gap-3 group">
+                    <div class="w-32 h-32 rounded-full overflow-hidden bg-gray-100 shadow-sm group-hover:shadow-md transition border border-gray-200">
+                        <img src="images/categories/pets.png" alt="Pets" class="w-full h-full object-cover">
+                    </div>
+                    <span class="font-medium text-gray-700 group-hover:underline decoration-2">Pets</span>
+                </a>
+                <!-- Category Item -->
+                <a href="#" class="flex flex-col items-center gap-3 group">
+                    <div class="w-32 h-32 rounded-full overflow-hidden bg-gray-100 shadow-sm group-hover:shadow-md transition border border-gray-200">
+                        <img src="images/categories/beauty.png" alt="Beauty" class="w-full h-full object-cover">
+                    </div>
+                    <span class="font-medium text-gray-700 group-hover:underline decoration-2">Beauty</span>
+                </a>
+            </div>
+        </section>
+
+        <!-- Featured Deals & More -->
+        <section>
+            <div class="flex items-center justify-between mb-4">
+                <h2 class="text-2xl font-bold text-gray-900">Featured deals & more</h2>
+                <a href="#" class="text-sm font-medium underline hover:text-brand-blue">View all</a>
+            </div>
+            <div class="flex gap-4 overflow-x-auto pb-4 hide-scrollbar -mx-4 px-4 sm:grid sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5 sm:overflow-visible sm:mx-0 sm:px-0">
+                
+                <!-- Product Card 1 -->
+                <div class="min-w-[180px] bg-white rounded-lg border border-gray-200 shadow-sm hover:shadow-md transition p-4 relative flex flex-col">
+                    <span class="absolute top-2 left-2 bg-green-700 text-white text-xs font-bold px-2 py-0.5 rounded">Rollback</span>
+                    <div class="h-40 flex items-center justify-center mb-4">
+                        <img src="https://placehold.co/200x200/white/4b5563?text=TV" alt="Product" class="max-h-full object-contain">
+                    </div>
+                    <div class="mt-auto">
+                        <div class="flex items-baseline gap-1 mb-1">
+                            <span class="text-green-700 font-bold text-lg">$298.00</span>
+                            <span class="text-gray-400 text-xs line-through">$350.00</span>
+                        </div>
+                        <p class="text-sm text-gray-700 mb-4 line-clamp-2 hover:underline cursor-pointer">55" 4K UHD Smart TV with HDR</p>
+                        <button class="w-full py-1.5 rounded-full border border-gray-300 font-medium text-sm hover:border-gray-800 hover:bg-gray-50 transition">Add to cart</button>
+                    </div>
+                </div>
+
+                <!-- Product Card 2 -->
+                <div class="min-w-[180px] bg-white rounded-lg border border-gray-200 shadow-sm hover:shadow-md transition p-4 relative flex flex-col">
+                    <span class="absolute top-2 left-2 bg-green-700 text-white text-xs font-bold px-2 py-0.5 rounded">Deal</span>
+                    <div class="h-40 flex items-center justify-center mb-4">
+                        <img src="https://placehold.co/200x200/white/4b5563?text=Blender" alt="Product" class="max-h-full object-contain">
+                    </div>
+                    <div class="mt-auto">
+                        <div class="flex items-baseline gap-1 mb-1">
+                            <span class="text-green-700 font-bold text-lg">$24.99</span>
+                            <span class="text-gray-400 text-xs line-through">$49.99</span>
+                        </div>
+                        <p class="text-sm text-gray-700 mb-4 line-clamp-2 hover:underline cursor-pointer">High Speed Blender 1000W</p>
+                        <button class="w-full py-1.5 rounded-full border border-gray-300 font-medium text-sm hover:border-gray-800 hover:bg-gray-50 transition">Add to cart</button>
+                    </div>
+                </div>
+
+                <!-- Product Card 3 -->
+                <div class="min-w-[180px] bg-white rounded-lg border border-gray-200 shadow-sm hover:shadow-md transition p-4 relative flex flex-col">
+                    <div class="h-40 flex items-center justify-center mb-4">
+                        <img src="https://placehold.co/200x200/white/4b5563?text=Headphones" alt="Product" class="max-h-full object-contain">
+                    </div>
+                    <div class="mt-auto">
+                        <div class="flex items-baseline gap-1 mb-1">
+                            <span class="text-gray-900 font-bold text-lg">$59.00</span>
+                        </div>
+                        <p class="text-sm text-gray-700 mb-4 line-clamp-2 hover:underline cursor-pointer">Wireless Noise Cancelling Headphones</p>
+                        <button class="w-full py-1.5 rounded-full border border-gray-300 font-medium text-sm hover:border-gray-800 hover:bg-gray-50 transition">Add to cart</button>
+                    </div>
+                </div>
+
+                <!-- Product Card 4 -->
+                <div class="min-w-[180px] bg-white rounded-lg border border-gray-200 shadow-sm hover:shadow-md transition p-4 relative flex flex-col">
+                    <span class="absolute top-2 left-2 bg-brand-yellow text-brand-dark text-xs font-bold px-2 py-0.5 rounded">Best Seller</span>
+                    <div class="h-40 flex items-center justify-center mb-4">
+                        <img src="https://placehold.co/200x200/white/4b5563?text=Laptop" alt="Product" class="max-h-full object-contain">
+                    </div>
+                    <div class="mt-auto">
+                        <div class="flex items-baseline gap-1 mb-1">
+                            <span class="text-gray-900 font-bold text-lg">$449.00</span>
+                        </div>
+                        <p class="text-sm text-gray-700 mb-4 line-clamp-2 hover:underline cursor-pointer">15.6" Laptop, 8GB RAM, 256GB SSD</p>
+                        <button class="w-full py-1.5 rounded-full border border-gray-300 font-medium text-sm hover:border-gray-800 hover:bg-gray-50 transition">Add to cart</button>
+                    </div>
+                </div>
+
+                <!-- Product Card 5 -->
+                <div class="min-w-[180px] bg-white rounded-lg border border-gray-200 shadow-sm hover:shadow-md transition p-4 relative flex flex-col">
+                    <span class="absolute top-2 left-2 bg-green-700 text-white text-xs font-bold px-2 py-0.5 rounded">Rollback</span>
+                    <div class="h-40 flex items-center justify-center mb-4">
+                        <img src="https://placehold.co/200x200/white/4b5563?text=Coffee" alt="Product" class="max-h-full object-contain">
+                    </div>
+                    <div class="mt-auto">
+                        <div class="flex items-baseline gap-1 mb-1">
+                            <span class="text-green-700 font-bold text-lg">$12.98</span>
+                            <span class="text-gray-400 text-xs line-through">$18.48</span>
+                        </div>
+                        <p class="text-sm text-gray-700 mb-4 line-clamp-2 hover:underline cursor-pointer">Premium Coffee Maker 12-Cup</p>
+                        <button class="w-full py-1.5 rounded-full border border-gray-300 font-medium text-sm hover:border-gray-800 hover:bg-gray-50 transition">Add to cart</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Popular in Games & Accessories -->
+        <section>
+            <div class="flex items-center justify-between mb-4">
+                <h2 class="text-2xl font-bold text-gray-900">Popular in Games & Accessories</h2>
+                <a href="#" class="text-sm font-medium underline hover:text-brand-blue">View all</a>
+            </div>
+            <div class="flex gap-4 overflow-x-auto pb-4 hide-scrollbar -mx-4 px-4 sm:grid sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5 sm:overflow-visible sm:mx-0 sm:px-0">
+                
+                <!-- Game Card 1 -->
+                <div class="min-w-[180px] bg-white rounded-lg border border-gray-200 shadow-sm hover:shadow-md transition p-4 relative flex flex-col">
+                    <div class="h-40 flex items-center justify-center mb-4">
+                        <img src="https://placehold.co/200x200/white/4b5563?text=Console" alt="Product" class="max-h-full object-contain">
+                    </div>
+                    <div class="mt-auto">
+                        <div class="flex items-baseline gap-1 mb-1">
+                            <span class="text-gray-900 font-bold text-lg">$499.99</span>
+                        </div>
+                        <p class="text-sm text-gray-700 mb-4 line-clamp-2 hover:underline cursor-pointer">Next-Gen Gaming Console 1TB</p>
+                        <button class="w-full py-1.5 rounded-full border border-gray-300 font-medium text-sm hover:border-gray-800 hover:bg-gray-50 transition">Add to cart</button>
+                    </div>
+                </div>
+
+                <!-- Game Card 2 -->
+                <div class="min-w-[180px] bg-white rounded-lg border border-gray-200 shadow-sm hover:shadow-md transition p-4 relative flex flex-col">
+                    <div class="h-40 flex items-center justify-center mb-4">
+                        <img src="https://placehold.co/200x200/white/4b5563?text=Controller" alt="Product" class="max-h-full object-contain">
+                    </div>
+                    <div class="mt-auto">
+                        <div class="flex items-baseline gap-1 mb-1">
+                            <span class="text-gray-900 font-bold text-lg">$59.99</span>
+                        </div>
+                        <p class="text-sm text-gray-700 mb-4 line-clamp-2 hover:underline cursor-pointer">Wireless Controller - Midnight Black</p>
+                        <button class="w-full py-1.5 rounded-full border border-gray-300 font-medium text-sm hover:border-gray-800 hover:bg-gray-50 transition">Add to cart</button>
+                    </div>
+                </div>
+
+                <!-- Game Card 3 -->
+                <div class="min-w-[180px] bg-white rounded-lg border border-gray-200 shadow-sm hover:shadow-md transition p-4 relative flex flex-col">
+                    <span class="absolute top-2 left-2 bg-green-700 text-white text-xs font-bold px-2 py-0.5 rounded">Save $10</span>
+                    <div class="h-40 flex items-center justify-center mb-4">
+                        <img src="https://placehold.co/200x200/white/4b5563?text=Game" alt="Product" class="max-h-full object-contain">
+                    </div>
+                    <div class="mt-auto">
+                        <div class="flex items-baseline gap-1 mb-1">
+                            <span class="text-green-700 font-bold text-lg">$49.99</span>
+                            <span class="text-gray-400 text-xs line-through">$59.99</span>
+                        </div>
+                        <p class="text-sm text-gray-700 mb-4 line-clamp-2 hover:underline cursor-pointer">Action Adventure Game - Standard Edition</p>
+                        <button class="w-full py-1.5 rounded-full border border-gray-300 font-medium text-sm hover:border-gray-800 hover:bg-gray-50 transition">Add to cart</button>
+                    </div>
+                </div>
+
+                <!-- Game Card 4 -->
+                <div class="min-w-[180px] bg-white rounded-lg border border-gray-200 shadow-sm hover:shadow-md transition p-4 relative flex flex-col">
+                    <div class="h-40 flex items-center justify-center mb-4">
+                        <img src="https://placehold.co/200x200/white/4b5563?text=Headset" alt="Product" class="max-h-full object-contain">
+                    </div>
+                    <div class="mt-auto">
+                        <div class="flex items-baseline gap-1 mb-1">
+                            <span class="text-gray-900 font-bold text-lg">$89.00</span>
+                        </div>
+                        <p class="text-sm text-gray-700 mb-4 line-clamp-2 hover:underline cursor-pointer">Gaming Headset Surround Sound</p>
+                        <button class="w-full py-1.5 rounded-full border border-gray-300 font-medium text-sm hover:border-gray-800 hover:bg-gray-50 transition">Add to cart</button>
+                    </div>
+                </div>
+
+                <!-- Game Card 5 -->
+                <div class="min-w-[180px] bg-white rounded-lg border border-gray-200 shadow-sm hover:shadow-md transition p-4 relative flex flex-col">
+                    <div class="h-40 flex items-center justify-center mb-4">
+                        <img src="https://placehold.co/200x200/white/4b5563?text=VR" alt="Product" class="max-h-full object-contain">
+                    </div>
+                    <div class="mt-auto">
+                        <div class="flex items-baseline gap-1 mb-1">
+                            <span class="text-gray-900 font-bold text-lg">$299.00</span>
+                        </div>
+                        <p class="text-sm text-gray-700 mb-4 line-clamp-2 hover:underline cursor-pointer">Virtual Reality Headset 128GB</p>
+                        <button class="w-full py-1.5 rounded-full border border-gray-300 font-medium text-sm hover:border-gray-800 hover:bg-gray-50 transition">Add to cart</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-[#e6f1fc] pt-10 pb-6 mt-10 border-t border-gray-200">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-2 md:grid-cols-5 gap-8 mb-10 text-sm">
+                <div class="col-span-2 md:col-span-1">
+                    <h3 class="font-bold text-gray-900 mb-4">MyMart Services</h3>
+                    <ul class="space-y-2 text-gray-600">
+                        <li><a href="#" class="hover:underline">Pharmacy</a></li>
+                        <li><a href="#" class="hover:underline">Auto Care Center</a></li>
+                        <li><a href="#" class="hover:underline">MyMart Services</a></li>
+                        <li><a href="#" class="hover:underline">MyMart Pay</a></li>
+                        <li><a href="#" class="hover:underline">Money Services</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="font-bold text-gray-900 mb-4">Get to Know Us</h3>
+                    <ul class="space-y-2 text-gray-600">
+                        <li><a href="#" class="hover:underline">Our Company</a></li>
+                        <li><a href="#" class="hover:underline">Store Directory</a></li>
+                        <li><a href="#" class="hover:underline">Digital Museum</a></li>
+                        <li><a href="#" class="hover:underline">Our Suppliers</a></li>
+                        <li><a href="#" class="hover:underline">Sell on MyMart.com</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="font-bold text-gray-900 mb-4">Customer Service</h3>
+                    <ul class="space-y-2 text-gray-600">
+                        <li><a href="#" class="hover:underline">Help Center</a></li>
+                        <li><a href="#" class="hover:underline">Returns</a></li>
+                        <li><a href="#" class="hover:underline">Product Recalls</a></li>
+                        <li><a href="#" class="hover:underline">Accessibility</a></li>
+                        <li><a href="#" class="hover:underline">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="font-bold text-gray-900 mb-4">In The Spotlight</h3>
+                    <ul class="space-y-2 text-gray-600">
+                        <li><a href="#" class="hover:underline">Portable Air Conditioners</a></li>
+                        <li><a href="#" class="hover:underline">PS5</a></li>
+                        <li><a href="#" class="hover:underline">Trampoline</a></li>
+                        <li><a href="#" class="hover:underline">Skateboard</a></li>
+                        <li><a href="#" class="hover:underline">Outdoor Furniture</a></li>
+                    </ul>
+                </div>
+                <div class="col-span-2 md:col-span-1">
+                    <h3 class="font-bold text-gray-900 mb-4">Stay Connected</h3>
+                    <p class="text-gray-600 mb-4">Sign up for our newsletter to get the latest updates.</p>
+                    <form class="flex gap-2">
+                        <input type="email" placeholder="Enter email" class="flex-1 px-3 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-1 focus:ring-brand-blue">
+                        <button class="bg-brand-blue text-white px-4 py-2 rounded-md text-sm font-bold hover:bg-blue-800 transition">Sign Up</button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-300 pt-6 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-gray-600">
+                <div class="flex flex-wrap justify-center gap-4">
+                    <a href="#" class="hover:underline">Terms of Use</a>
+                    <a href="#" class="hover:underline">Privacy Policy</a>
+                    <a href="#" class="hover:underline">CA Privacy Rights</a>
+                    <a href="#" class="hover:underline">Do Not Sell My Personal Information</a>
+                </div>
+                <div>
+                    &copy; 2025 MyMart. All Rights Reserved.
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
+
